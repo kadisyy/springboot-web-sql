@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    
+    <head>  
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> <!-- HTTP标题信息(HTTP-EQUIV) -->  
+        <title>用户注册页面</title>  
+          
+        <link type="text/css" rel="stylesheet" href="bootstrap/css/register.css" /> <!--引入外部定义好的register.css文件 -->  
+          
+        <script type="text/javascript" src="bootstrap/js/register.js"></script>  <!--引入外部定义好的register.js文件 -->  
+          
+    </head>  
+    <body>  
+        <script type="text/javascript">
+        
+        function hello()
+        {
+           	var username=document.getElementById("username").value;
+        	var password=document.getElementById("password").value;
+          	var rePassword=document.getElementById("rePassword").value;
+        	var email=document.getElementById("Email").value;
+          	var realName=document.getElementById("realName").value;
+        	var province=document.getElementById("province").value;
+        	window.location.href='registerOK/'+username+'/'+password+"/"+rePassword+'/'+email+"/"+realName+'/'+province;
+        //	var xhr = new XMLHttpRequest();
+        	//alert('username='+username+'&pwd;='+pd);
+        	//xhr.open( 'GET', 'window.location.href:successLogin', true );
+        	//xhr.setRequestHeader( 'Content-Type', 'application/json' );
+        	//xhr.send('username='+username+'&pwd;='+pd);
+        }
+        </script>
+        <form action="" method="" onsubmit="return validateForm()"> <!-- 当触发提交事件时调用validateForm()方法  -->  
+            <table border="26" align="center" width="50%">  
+                <caption >用户注册</caption>  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>用户名：  
+                    </td>  
+                    <td><input type="text" name="username" id="username" class="input_class" onblur="checkUsername(this)" /><span id="username_span">用户名由3-5个字符组成</span></td>                   
+                </tr>  
+                  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>密码：  
+                    </td>  
+                    <td><input type="password" name="password" id="password" class="input_class" onblur="checkPassword(this)" /><span id="password_span">请输入8-12位密码</span></td>                     
+                </tr>  
+                  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>确认密码：  
+                    </td>  
+                    <td><input type="password" name="rePassword" id="rePassword" class="input_class" onblur="checkRePassword(this)" /><span id="rePassword_span">两次密码不一致</span></td>                    
+                </tr>  
+                  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>Email：  
+                    </td>  
+                    <td><input type="text" name="Email" id="Email" class="input_class" onblur="checkEmail(this)" /><span id="Email_span" >格式示例：xxxxxxxx@163.com</span></td>                     
+                </tr>  
+                  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>真实姓名：  
+                    </td>  
+                    <td><input type="text" name="realName" id="realName" class="input_class" onblur="checkName(this)" /><span id="realName_span">由2-5个中文组成</span></td>                      
+                </tr>  
+                  
+                <tr>  
+                    <td align="right">  
+                        <sup><font color="red">*</font></sup>省份：  
+                    </td>  
+                    <td><select name="province" id="province" onblur="checkProvince(this)">  
+                        <option value="--请选择--">--请选择--</option>  
+                        <option value="河北">河北</option>  
+                        <option value="山西">山西</option>  
+                        <option value="山东">山东</option>  
+                        <option value="海南">海南</option>  
+                    </select><span id="province_span">请选择省份</span></td>                   
+                </tr>  
+                  
+                <tr>  
+                    <td align="center" colspan="2">  <!-- 合并两列 -->  
+                        <input type="submit" class="aaa" value="注册" onclick="hello();" />  
+                        <input type="reset" class="aaa" value="重置" />  
+                    </td>  
+                </tr>  
+            </table>  
+        </form>  
+    </body>  
+</html>  

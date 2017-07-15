@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+  
+  <HEAD>
+    <TITLE>用户登录</TITLE>
+    <LINK th:href="@{images/Default.css}" type="text/css" rel="stylesheet"></LINK>
+    <LINK th:href="@{images/xtree.css}" type="text/css" rel="stylesheet"></LINK>
+    <LINK th:href="@{images/User_Login.css}" type="text/css" rel="stylesheet"></LINK>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <META content="MSHTML 6.00.6000.16674" name="GENERATOR" />
+    
+    <script type="text/javascript" src="/bootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" >
+    function getAccess()
+    {
+
+    	var username=document.getElementById("TxtUserName").value;
+    	var pd=document.getElementById("TxtPassword").value;
+    	alert(pd);
+    	window.location.href='successLogin/'+username+'/'+pd;    	
+    //	var xhr = new XMLHttpRequest();
+    	//alert('username='+username+'&pwd;='+pd);
+    	//xhr.open( 'GET', 'window.location.href:successLogin', true );
+    	//xhr.setRequestHeader( 'Content-Type', 'application/json' );
+    	//xhr.send('username='+username+'&pwd;='+pd);
+    }
+    function register()
+    {
+    	window.location.href="register";    	
+    //	var xhr = new XMLHttpRequest();
+    	//alert('username='+username+'&pwd;='+pd);
+    	//xhr.open( 'GET', 'window.location.href:successLogin', true );
+    	//xhr.setRequestHeader( 'Content-Type', 'application/json' );
+    	//xhr.send('username='+username+'&pwd;='+pd);
+    }
+    function PostSubmit() {  
+    	var username=document.getElementById("TxtUserName").value;
+    	var pd=document.getElementById("TxtPassword").value;
+    	//alert(username+pd);
+    	//var json={"username":""+username+"","pwd":""+pd+""};
+    	//alert(json);
+    	//var post={data:JSON.stringify(json)};
+    	//$.post("/successLogin",post); 
+    	
+    	 var saveDataAry=[];  
+         var data1={"username":""+username+"","pwd":""+pd+""};  
+         saveDataAry.push(data1);  
+         $.ajax({ 
+             type:"POST", 
+             url:"successLogin", 
+             dataType:"json",      
+             contentType:"application/json",               
+             data:JSON.stringify(saveDataAry), 
+             success:function(data){ 
+                  console.log(">>>>>>>>>>>>>>>>>>>>>>\n"+JSON.stringify(saveDataAry));                  
+             } 
+          }); 
+    	
+    }; 
+    </script>
+  </HEAD>
+  <BODY id="userlogin_body">
+
+    <DIV></DIV>
+    <DIV id="user_login">
+      <DL>
+        <DD id="user_top">
+          <UL>
+            <LI class="user_top_l"></LI>
+            <LI class="user_top_c"></LI>
+            <LI class="user_top_r"></LI>
+          </UL>
+          </DD>
+          <DD id="user_main" >
+            <UL>
+              <LI class="user_main_l"></LI>
+              <LI class="user_main_c">
+                <DIV class="user_main_box">
+                  <UL>
+                    <LI class="user_main_text">用户名：</LI>
+                    <LI class="user_main_input">
+                      <INPUT class="TxtUserNameCssClass" id="TxtUserName" maxLength="20" name="TxtUserName" /></LI>
+                  </UL>
+                  <UL>
+                    <LI class="user_main_text">密 码：</LI>
+                    <LI class="user_main_input">
+                      <INPUT class="TxtPasswordCssClass" id="TxtPassword" type="password" name="TxtPassword" /></LI>
+                  </UL>
+                  <UL>
+                    <LI class="user_main_text">Cookie：</LI>
+                    <LI class="user_main_input">
+                      <SELECT id="DropExpiration" name="DropExpiration">
+                        <OPTION value="None selected">不保存</OPTION>
+                        <OPTION value="Day">保存一天</OPTION>
+                        <OPTION value="Month">保存一月</OPTION>
+                        <OPTION value="Year">保存一年</OPTION></SELECT>
+                    </LI>
+                  </UL>
+                </DIV>
+              </LI>
+              <LI class="user_main_r" >
+                 <input type="submit"  value="提交"  src="../static/images/user_botton.gif" onClick="getAccess();" /> 
+                 <input type="submit"  value="注册"  src="../static/images/user_botton.gif" onClick="register();" /> 
+                 
+              </LI>
+            </UL>
+   
+            <DD id="user_bottom">
+              <UL>
+                <LI class="user_bottom_l"></LI>
+                <LI class="user_bottom_c"></LI>
+                <LI class="user_bottom_r"></LI>
+              </UL>
+            </DD> 
+          </DD>
+      </DL>
+    </DIV>
+    <SPAN id="ValrUserName" style="DISPLAY: none; COLOR: red"></SPAN>
+    <SPAN id="ValrPassword" style="DISPLAY: none; COLOR: red"></SPAN>
+    <SPAN id="ValrValidateCode" style="DISPLAY: none; COLOR: red"></SPAN>
+    <DIV id="ValidationSummary1" style="DISPLAY: none; COLOR: red"></DIV>
+    <DIV></DIV>
+  </BODY>
+</html>
